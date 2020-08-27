@@ -25,6 +25,8 @@ let shuffleOrder = () => {
     }
 }
 
+//Acende a próxima cor
+
 let lightColor = (element, number) => {
     number = number * 500;
     setTimeout{() => {
@@ -33,4 +35,35 @@ let lightColor = (element, number) => {
     setTimeout(() => {
         element.classList.remove('selected');
     });
+}
+
+// Checa se os botoes clicados estão na ordem certa
+
+let checkOrder = () => {
+    for( let i in  clickedOrder) {
+        if(clickedOrder[i] != order [i]){
+            losel();
+            break;
+        }
+    }
+
+    if(clickkedOrder.length == order.length) {
+        alert(`Pontuação: ${score}/nVocê acertou! Iniciando o próximo nível!`);
+        nextLevel();
+    }
+
+}
+
+// Função para o clique do usuário
+
+let click = (color) => {
+    clickkedOrder[clickkedOrder.length] = color;
+    elementColor(color).classList.add('selected');
+
+    setTimeout (() => {
+        elementColor(color).classList.remove('selected');
+    })
+
+    checkOrder();
+
 }
